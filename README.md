@@ -1,8 +1,4 @@
-Absolutely. Since this is going public on GitHub, I'd make the README look like a **real embedded-systems project**, not just a collection of source files.
-
-Based on what we've worked through, I'd describe it as a **Linux-side MCUmgr/SMP client communicating with a Zephyr MCUmgr server over UART**, with CBOR, Base64 framing, image upload, image state parsing, confirmation and activation.
-
-You can copy-paste this directly into `README.md`:
+**Linux-side MCUmgr/SMP client communicating with a Zephyr MCUmgr server over UART**, with CBOR, Base64 framing, image upload, image state parsing, confirmation and activation.
 
 ````markdown
 # MCUmgr SMP Linux Client in C
@@ -623,14 +619,28 @@ This project builds upon publicly documented technologies and open-source compon
 Please refer to the respective projects and documentation for their licenses and implementation details.
 
 ```
+## Installation
 
-### One thing I'd change before you push it
+### Requirements
 
-I **wouldn't claim “fully implemented MCUmgr”** yet. What you've built is much more accurately described as:
+- Linux
+- GCC
+- libcbor
+- OpenSSL/libcrypto
+- POSIX-compatible serial interface
 
-> **A Linux C implementation of the MCUmgr/SMP serial transport and image-management functionality.**
+### Ubuntu/Debian
 
-That's actually a strong description because you've gone all the way down to **UART → framing → Base64 → SMP → CBOR → image upload → hash → confirmation → activation**.
+Install the required packages:
 
-Also, since this is your first public repo, I'd add a `LICENSE` and `.gitignore` before pushing. **MIT** is a simple choice if all the code you're publishing is genuinely yours and you're not incorporating code whose license imposes different requirements.
-```
+```bash
+sudo apt update
+sudo apt install -y build-essential libcbor-dev libssl-dev
+
+## Compile using GCC command
+
+```bash
+ cc enc_dec_fun.c app_stack_uart.c -lcbor -pthread -o enc_dec_fun -lcrypto
+
+```bash
+./enc_dec_fun
