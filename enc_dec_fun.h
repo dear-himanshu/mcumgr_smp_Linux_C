@@ -3,7 +3,7 @@
 
 
 //void encode(void); 
-
+#include "app_stack_uart.h"
 #include <stdint.h>
  
 // max buffer size
@@ -51,5 +51,7 @@ enum mcumgr_group_t {
 };
  
 
+int image_smp_start(void); 
+void test_fun(); 
 
 #endif // ENC_DEC_FUN_H

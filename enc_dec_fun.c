@@ -1215,7 +1215,7 @@ static void print_hex(const uint8_t *data, size_t len)
 int upload_image()
 {
 
-    const char *file_name = "zephyr1_2.signed.bin";
+    const char *file_name = "/home/riddle/Programming/golioth-firmware-sdk/examples/linux/golioth_basics/mcumgr_smp_Elinux/zephyr_cyrax.bin";
 
     FILE *fp;
 
@@ -1680,7 +1680,11 @@ int upload_image()
     return 0;
 }
 
-int main(void)
+void test_fun(){
+    printf("data output successful !!\r\n"); 
+}
+
+int image_smp_start(void)
 {
 
     //-----------------------------------------------------------for image upload--------------
